@@ -5,6 +5,9 @@ import {
     executeScript,
 } from "@onflow/flow-js-testing"
 
+// We need to set timeout for a higher number, because some transactions might take up some time
+jest.setTimeout(1000000);
+
 describe('sayHello', () => {
     // Instantiate emulator and path to Cadence files
     beforeEach(async () => {
