@@ -12,7 +12,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: gcr.io/flow-container-registry/emulator
 
     strategy:
       matrix:
@@ -28,6 +28,7 @@ jobs:
     - run: npm ci
     # - run: npm run build
     # - run: npm run check
+    # start docker container
     - run: npm run test
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
