@@ -29,7 +29,7 @@ jobs:
     # - run: npm run build
     # - run: npm run check
     # start docker container
-    - run: docker run -p 3569:3569 -p 8080:8080 -e FLOW_HOST=0.0.0.0
+    - run: docker run -p 3569:3569 -p 8080:8080 -e FLOW_HOST=0.0.0.0 gcr.io/flow-container-registry/emulator
     - run: npm run test
     - name: Archive code coverage results
       uses: actions/upload-artifact@v2
