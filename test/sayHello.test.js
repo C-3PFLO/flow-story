@@ -19,8 +19,6 @@ describe('sayHello', () => {
     });
 
     it('executeScript', async () => {
-        // Turn on logging from begining
-        emulator.setLogging(true)
         const [result, error, logs] = await executeScript('sayHello', null);
         expect(result).toEqual('Hello from Cadence!');
     });
