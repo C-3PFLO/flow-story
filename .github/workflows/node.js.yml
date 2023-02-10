@@ -11,13 +11,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [16.x]
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -30,11 +27,12 @@ jobs:
     - name: Set up Homebrew
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@master
-    - name: Install Flow CLI
-      run: brew install flow-cli
-    - name: Install ci
-      run: npm ci
+    - run: brew install flow-cli
+    - run: npm ci
     
+    # Build
+    - run: npm run build
+
     # Validate
-    - name: Test
-      run: npm test
+    - run: npm run check
+    - run: npm test
