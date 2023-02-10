@@ -1,3 +1,4 @@
 pub fun main(): String {
-    return "Hello from Cadence!"
+    log("the call is coming from inside the script")
+    return "Hello from Cadence!!"
 }

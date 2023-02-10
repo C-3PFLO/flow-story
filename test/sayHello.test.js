@@ -13,7 +13,10 @@ describe('sayHello', () => {
     beforeEach(async () => {
         const basePath = path.resolve(__dirname, "../cadence");
         await init(basePath);
-        await emulator.start();
+        await emulator.start({
+            logging: true,
+            flags: '--skip-version-check',
+        });
     });
 
     // Stop emulator, so it could be restarted
@@ -22,6 +25,8 @@ describe('sayHello', () => {
     });
 
     it('executeScript', async () => {
+        // Turn on logging from begining
+        emulator.setLogging(true)
         const [result, error, logs] = await executeScript('sayHello', null);
         expect(result).toEqual('Hello from Cadence!');
     });
