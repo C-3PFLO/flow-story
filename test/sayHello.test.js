@@ -13,10 +13,7 @@ describe('sayHello', () => {
     beforeEach(async () => {
         const basePath = path.resolve(__dirname, "../cadence");
         await init(basePath);
-        await emulator.start({
-            logging: true,
-            flags: '--skip-version-check',
-        });
+        await emulator.start();
     });
 
     // Stop emulator, so it could be restarted

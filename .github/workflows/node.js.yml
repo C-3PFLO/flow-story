@@ -26,38 +26,15 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
-    # Install homebrew with cache
+    # Install dependencies
     - name: Set up Homebrew
       id: set-up-homebrew
       uses: Homebrew/actions/setup-homebrew@master
-    - name: Cache Homebrew Bundler RubyGems
-      id: cache
-      uses: actions/cache@v1
-      with:
-        path: ${{ steps.set-up-homebrew.outputs.gems-path }}
-        key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
-        restore-keys: ${{ runner.os }}-rubygems-
-    - name: Install Homebrew Bundler RubyGems
-      if: steps.cache.outputs.cache-hit != 'true'
-      run: brew install-bundler-gems
-
-    # Install dependencies
     - name: Install Flow CLI
       run: brew install flow-cli
     - name: Install ci
       run: npm ci
     
     # Validate
-    # - name: Build
-    #   run: npm run build
-    # - name: Lint
-    #   run: npm run lint
     - name: Test
       run: npm test
-    
-    # Archive
-    - name: Archive code coverage results
-      uses: actions/upload-artifact@v2
-      with:
-        name: code-coverage-report
-        path: artifacts/coverage/coverage-final.json
