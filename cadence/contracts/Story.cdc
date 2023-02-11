@@ -1,4 +1,4 @@
-pub contract OurStory {
+pub contract Story {
 
     pub struct Snippet {
         pub let storySnippet: String
@@ -55,3 +55,4 @@ pub contract OurStory {
         self.snippets = []
     }
 }
+ 

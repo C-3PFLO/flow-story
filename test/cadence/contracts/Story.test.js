@@ -9,7 +9,7 @@ import {
     safeSendTransaction,
 } from '../../common';
 
-describe('cadence/contracts/OurStory', () => {
+describe('cadence/contracts/Story', () => {
     let admin;
     let user1;
     let user2;

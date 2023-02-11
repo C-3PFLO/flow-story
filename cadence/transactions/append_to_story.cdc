@@ -1,4 +1,4 @@
-import OurStory from "../contracts/OurStory.cdc"
+import Story from "../contracts/Story.cdc"
 
 transaction(nextAuthor: Address, snippet: String) {
     var signer: Address
@@ -6,7 +6,7 @@ transaction(nextAuthor: Address, snippet: String) {
         self.signer = signer.address
     }
     execute {
-        OurStory.appendToStory(
+        Story.appendToStory(
             storySnippet: snippet,
             author: self.signer,
             nextAuthor: nextAuthor

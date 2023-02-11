@@ -16,7 +16,7 @@ beforeEach(async () => {
     await emulator.start();
     // Deploy
     const admin = await getAccountAddress('admin');
-    await safeDeployContractByName({ to: admin, name: 'OurStory' });
+    await safeDeployContractByName({ to: admin, name: 'Story' });
 });
 
 // Stop emulator, so it could be restarted

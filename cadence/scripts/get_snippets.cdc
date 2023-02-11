@@ -1,5 +1,5 @@
-import OurStory from "../contracts/OurStory.cdc"
+import Story from "../contracts/Story.cdc"
 
-pub fun main(): [ OurStory.Snippet ] {
-    return OurStory.getSnippets()
+pub fun main(): [ Story.Snippet ] {
+    return Story.getSnippets()
 }
