@@ -19,8 +19,8 @@ beforeEach(async () => {
         flags: '--skip-version-check',
     });
     // Deploy
-    const Alice = await getAccountAddress('Alice');
-    await deployContractByName({ to: Alice, name: 'Person' });
+    const admin = await getAccountAddress('admin');
+    await deployContractByName({ to: admin, name: 'OurStory' });
 });
 
 // Stop emulator, so it could be restarted
