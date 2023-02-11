@@ -23,17 +23,35 @@ describe('cadence/contracts/OurStory', () => {
         expect(result).toEqual(admin);
     });
     it('appendToStory', async () => {
-        await safeSendTransaction({
+        let result;
+        // first transaction
+        [result] = await safeSendTransaction({
             name: 'append_to_story',
             args: [user1, 'This is the start of something great...'],
             signers: [admin],
         });
-        await safeSendTransaction({
+        expect(result.events.length).toEqual(1);
+        expect(result.events[0].type).toContain('AppendedToStory');
+        expect(result.events[0].data).toEqual({
+            author: admin,
+            nextAuthor: user1,
+            storySnippet: 'This is the start of something great...',
+        });
+        // second transaction
+        [result] = await safeSendTransaction({
             name: 'append_to_story',
             args: [user2, 'It is only the beginning'],
             signers: [user1],
         });
-        const [result] = await executeScript({ name: 'get_snippets' });
+        expect(result.events.length).toEqual(1);
+        expect(result.events[0].type).toContain('AppendedToStory');
+        expect(result.events[0].data).toEqual({
+            author: user1,
+            nextAuthor: user2,
+            storySnippet: 'It is only the beginning',
+        });
+        // run script to get result and validate
+        [result] = await executeScript({ name: 'get_snippets' });
         expect(result).toEqual([
             {
                 author: admin,
