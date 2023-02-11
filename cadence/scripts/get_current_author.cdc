@@ -1,5 +1,5 @@
-import OurStory from "../contracts/OurStory.cdc"
+import Story from "../contracts/Story.cdc"
 
 pub fun main(): Address {
-    return OurStory.currentAuthor
+    return Story.currentAuthor
 }
