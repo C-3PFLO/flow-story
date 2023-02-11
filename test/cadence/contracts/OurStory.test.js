@@ -4,6 +4,10 @@ import {
     sendTransaction,
     shallRevert,
 } from '@onflow/flow-js-testing';
+import {
+    safeExecuteScript,
+    safeSendTransaction,
+} from '../../common';
 
 describe('cadence/contracts/OurStory', () => {
     let admin;
@@ -15,16 +19,16 @@ describe('cadence/contracts/OurStory', () => {
         user2 = await getAccountAddress('user2');
     });
     it('getCurrentAuthor', async () => {
-        const [result] = await executeScript({ name: 'get_current_author' });
+        const [result] = await safeExecuteScript({ name: 'get_current_author' });
         expect(result).toEqual(admin);
     });
     it('appendToStory', async () => {
-        await sendTransaction({
+        await safeSendTransaction({
             name: 'append_to_story',
             args: [user1, 'This is the start of something great...'],
             signers: [admin],
         });
-        await sendTransaction({
+        await safeSendTransaction({
             name: 'append_to_story',
             args: [user2, 'It is only the beginning'],
             signers: [user1],

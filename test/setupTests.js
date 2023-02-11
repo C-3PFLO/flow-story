@@ -5,22 +5,18 @@ import {
     init,
     emulator,
     getAccountAddress,
-    deployContractByName,
 } from '@onflow/flow-js-testing';
+import { safeDeployContractByName } from './common';
 
 // Instantiate emulator and path to Cadence files
 beforeEach(async () => {
     // Configure
     const basePath = path.resolve(__dirname, '../cadence');
     await init(basePath);
-    // Start
-    await emulator.start({
-        logging: true,
-        flags: '--skip-version-check',
-    });
+    await emulator.start();
     // Deploy
     const admin = await getAccountAddress('admin');
-    await deployContractByName({ to: admin, name: 'OurStory' });
+    await safeDeployContractByName({ to: admin, name: 'OurStory' });
 });
 
 // Stop emulator, so it could be restarted
