@@ -1,0 +1,11 @@
+span:hover:not([contenteditable]) {
+    background-color: lightgray;
+}
+
+.user-input {
+    background-color: rgb(242, 241, 241);
+}
+
+[contenteditable] {
+    outline: 0px solid transparent;
+}

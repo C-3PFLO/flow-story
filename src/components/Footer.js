@@ -35,7 +35,10 @@ function Footer() {
                     />
                 </Grid>
                 <Grid item>
-                    <Typography> 252 / 280 </Typography>
+                    <Typography
+                        component="div"
+                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+                    >252 / 280</Typography>
                 </Grid>
                 <Grid item>
                     <Button variant="contained">Submit</Button>
