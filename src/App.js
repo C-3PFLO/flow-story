@@ -5,6 +5,7 @@ import theme from './theme';
 import Footer from './components/Footer';
 import Story from './components/Story';
 
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 const boxStyle = {
@@ -17,6 +18,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             {/* <Header></Header> */}
+            <Typography variant="h6" sx={{ m: 3 }}>flow-story</Typography>
             <Box component="main" sx={boxStyle}>
                 <Story></Story>
             </Box>
