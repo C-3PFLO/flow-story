@@ -1,70 +1,37 @@
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import './Story.css';
+import Box from '@mui/material/Box';
+import theme from '../theme';
 
-const snippets = [
-    {
-        key: '1',
-        author: 'C-3PFLO',
-        snippet: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum.`
-    },
-    {
-        key: '2',
-        author: 'C-3PFLO',
-        snippet: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum.`
-    },
-    {
-        key: '3',
-        author: 'R2-D2',
-        snippet: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum.`
-    },
-    {
-        key: '4',
-        author: 'C-3PFLO',
-        snippet: `Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-        culpa qui officia deserunt mollit anim id est laborum.`
-    }
-]
+/**
+ * NOTES:
+ * - Use contentEditable='true' to edit text in-line without an input
+ * or textarea that are either below the page or do not wrap with it
+ * - Set overflow scroll on parent to cause a scrollbar, but struggling
+ * with getting the height right when there is a header/footer AND
+ * when the user enters text that then drops below the footer, keeping
+ * the scroll moving with the cursor, etc.
+ */
 
-export default function Story() {
-    // document.getElementById("user-span").focus();
+export default function Story({ snippets }) {
+
     return (
         <Typography>
+
             {snippets.map((next) => (
-                <Tooltip key={next.key + '-tooltip'} title={'author: ' + next.author}>
-                <span key={next.key + '-span'}>{next.snippet}</span>
-            </Tooltip>
+                <Box
+                    key={next.key}
+                    sx={{
+                        ':hover': {
+                            backgroundColor: theme.palette.action.hover
+                        }
+                    }}
+                >
+                    <Tooltip arrow title={'author: ' + next.author}>
+                        <span>{next.snippet}</span>
+                    </Tooltip>
+                </Box>
             ))}
-            <span
-                id='user-span'
-                // ref={(input) => { this.span = input; }}
-                contentEditable='true'
-                className='user-input'
-            >
-            </span>
         </Typography>
     )
 }

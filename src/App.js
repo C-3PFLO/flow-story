@@ -1,31 +1,41 @@
+import * as React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from './theme';
+import Fab from '@mui/material/Fab';
+import Box from '@mui/material/Box';
+import EditIcon from '@mui/icons-material/Edit';
 
-// import Header from './components/Header';
-import Footer from './components/Footer';
+import theme from './theme';
+import Header from './components/Header';
 import Story from './components/Story';
 
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+// TEMPORARY loading data
+import snippets from './snippets';
 
-const boxStyle = {
-    m: 3,
-    maxHeight: 'calc(100vh - 192px)',
-    overflowY: 'scroll',
-}
+export default function App() {
 
-function App() {
     return (
         <ThemeProvider theme={theme}>
-            {/* <Header></Header> */}
-            <Typography variant="h6" sx={{ m: 3 }}>flow-story</Typography>
-            <Box component="main" sx={boxStyle}>
-                <Story></Story>
+            <Header></Header>
+            <Box sx={{ p: 3 }}>
+                
+                <Box>
+                    <Story snippets={snippets}></Story>
+                </Box>
+                <Box sx={{
+                        '& > :not(style)': {
+                            m: 1
+                        }
+                    }}>
+                    <Fab color='primary' aria-label="edit"
+                        sx={{
+                            position: 'fixed',
+                            bottom: 1,
+                            right: 1,
+                        }}>
+                        <EditIcon></EditIcon>
+                    </Fab>
+                </Box>
             </Box>
-            <Footer></Footer>
         </ThemeProvider>
-
     )
 }
-
-export default App;

@@ -1,13 +1,26 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+    typography: {
+        fontFamily: [
+            'Lucida Sans Typewriter',
+            'Lucida Console',
+            'monaco',
+            'Bitstream Vera Sans Mono',
+            'monospace', 
+        ],
+    },
     palette: {
+        // mode: 'dark',
         primary: {
-            main: '#1b5e20',
+            // main: '#fff'
+            main: '#0a0a0a'
+            // main: '#5393ff',
         },
-        secondary: {
-            main: '#9575cd',
-        },
+        // secondary: {
+        //     main: '#0a0a0a',
+        //     // main: '#43a047',
+        // },
     },
 });
 
