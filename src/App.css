@@ -1,0 +1,4 @@
+/* override react? default margin for full-page app */
+html, body, #root, #root > * {
+    margin: 0;
+}

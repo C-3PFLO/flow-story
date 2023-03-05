@@ -17,16 +17,12 @@ export default function Story({ snippets }) {
 
     return (
         <Typography>
-
             {snippets.map((next) => (
-                <Box
-                    key={next.key}
-                    sx={{
-                        ':hover': {
-                            backgroundColor: theme.palette.action.hover
-                        }
-                    }}
-                >
+                <Box key={next.key} sx={{
+                    ':hover': {
+                        backgroundColor: theme.palette.action.hover
+                    }
+                }}>
                     <Tooltip arrow title={'author: ' + next.author}>
                         <span>{next.snippet}</span>
                     </Tooltip>
