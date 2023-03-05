@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-const pages = ['About', 'Authors'];
+const pages = ['About', 'Activity', 'Authors'];
 const settings = ['Account: 0x16ae8f1cbfceaa9e', 'Logout'];
 const brand = 'flow-story';
 
