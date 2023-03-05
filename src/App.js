@@ -37,8 +37,8 @@ export default function App() {
                     </Fab>
                 </Box>
                 <Box sx={{
-                    mt: 2,
-                    mb: 2
+                    pt: 2,
+                    pb: 2
                 }}>
                     <Footer></Footer>
                 </Box>
