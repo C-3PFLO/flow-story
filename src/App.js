@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import Fab from '@mui/material/Fab';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import EditIcon from '@mui/icons-material/Edit';
 
 import theme from './theme';
@@ -21,12 +20,11 @@ export default function App() {
         <ThemeProvider theme={theme}>
             <Header></Header>
             <Box>
-                <Paper elevation={2} sx={{
-                    p: 3,
-                    m: 1
+                <Box sx={{
+                    p: 3, m: 1
                 }}>
                     <Story snippets={snippets}></Story>
-                </Paper>
+                </Box>
                 <Box sx={{
                     '& > :not(style)': { m: 1 }
                 }}>
@@ -39,10 +37,8 @@ export default function App() {
                     </Fab>
                 </Box>
                 <Box sx={{
-                    mt: 2,
-                    mb: 2,
-                    display: 'flex',
-                    justifyContent: 'center',
+                    pt: 2,
+                    pb: 2
                 }}>
                     <Footer></Footer>
                 </Box>

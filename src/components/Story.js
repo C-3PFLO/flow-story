@@ -16,7 +16,7 @@ import theme from '../theme';
 export default function Story({ snippets }) {
 
     return (
-        <Typography>
+        <>
             {snippets.map((next) => (
                 <Box key={next.key} sx={{
                     ':hover': {
@@ -24,10 +24,10 @@ export default function Story({ snippets }) {
                     }
                 }}>
                     <Tooltip arrow title={'author: ' + next.author}>
-                        <span>{next.snippet}</span>
+                        <Typography>{next.snippet}</Typography>
                     </Tooltip>
                 </Box>
             ))}
-        </Typography>
+        </>
     )
 }
